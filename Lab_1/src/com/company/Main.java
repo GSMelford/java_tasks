@@ -9,7 +9,7 @@ public class Main {
     private static final int columnSize = 9;
 
     public static void main(String[] args) {
-        int[][] array = fillArray(rowSize, columnSize);
+        int[][] array = fillArray(4, 5);
         printArray(array);
 
         printEvenNumber(array, n -> n % 2 == 0 && n != 0); //if 0 isn't even
@@ -31,11 +31,11 @@ public class Main {
         return array;
     }
 
-    private static void printEvenNumber(int[][] array, Predicate<Integer> getCondition){
+    private static void printEvenNumber(int[][] array, Predicate<Integer> evenCondition){
         System.out.print("Even number: ");
         for (int i = 0; i < array.length; i++){
-            int number = array[i][array.length - i - 1];
-            if (getCondition.test(number)) {
+            int number = array[i][array[i].length - i - 1];
+            if (evenCondition.test(number)) {
                 System.out.print(number + " ");
             }
         }
