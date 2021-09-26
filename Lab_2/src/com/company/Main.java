@@ -6,6 +6,20 @@ public class Main {
         CollectionTest(new MyLinkedList<>());
         CollectionTest(new MyArrayList<>(2));
 
+        SerializationUtilTest();
+    }
+
+    public static void SerializationUtilTest(){
+        Hero hero = new Hero("Anti-Mage", "Jungler", 100, 0, 0);
+
+        if(SerializationUtil.serialize(hero, "support.dat")){
+            System.out.println(hero.getName() + "recorded in a file.");
+        }
+
+        Hero creep = SerializationUtil.deserialize(" support.dat");
+        if(creep != null){
+            System.out.println(creep.getName() + " restored.");
+        }
     }
 
     public static void CollectionTest(Collection<Object> collection){
